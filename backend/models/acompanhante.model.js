@@ -3,7 +3,7 @@ const db = require('../config/db.config');
 const Acompanhante = {};
 
 Acompanhante.getAll = (result) => {
-    db.query('SELECT * FROM Acompanhantes', (err, res) => {
+    db.query('SELECT * FROM acompanhantes', (err, res) => {
         if (err) {
             console.log('Erro ao buscar acompanhantes:', err);
             result(err, null);
@@ -14,7 +14,7 @@ Acompanhante.getAll = (result) => {
 };
 
 Acompanhante.create = (novoAcompanhante, result) => {
-    db.query('INSERT INTO Acompanhantes SET ?', novoAcompanhante, (err, res) => {
+    db.query('INSERT INTO acompanhantes SET ?', novoAcompanhante, (err, res) => {
         if (err) {
             console.log('Erro ao criar acompanhante:', err);
             result(err, null);
@@ -25,7 +25,7 @@ Acompanhante.create = (novoAcompanhante, result) => {
 };
 
 Acompanhante.delete = (id, result) => {
-    db.query('DELETE FROM Acompanhantes WHERE id = ?', id, (err, res) => {
+    db.query('DELETE FROM acompanhantes WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erro ao deletar acompanhante:', err);
             result(err, null);
@@ -40,7 +40,7 @@ Acompanhante.delete = (id, result) => {
 };
 
 Acompanhante.update = (id, acompanhante, result) => {
-    db.query('UPDATE Acompanhantes SET ? WHERE id = ?', [acompanhante, id], (err, res) => {
+    db.query('UPDATE acompanhantes SET ? WHERE id = ?', [acompanhante, id], (err, res) => {
         if (err) {
             console.log('Erro ao atualizar acompanhante:', err);
             result(err, null);
@@ -55,7 +55,7 @@ Acompanhante.update = (id, acompanhante, result) => {
 };
 
 Acompanhante.findById = (id, result) => {
-    db.query(`SELECT * FROM Acompanhantes WHERE id = ${id}`, (err, res) => {
+    db.query(`SELECT * FROM acompanhantes WHERE id = ${id}`, (err, res) => {
         if (err) {
             console.log('Erro ao buscar acompanhante:', err);
             result(err, null);

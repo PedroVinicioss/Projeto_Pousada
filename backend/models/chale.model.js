@@ -3,7 +3,7 @@ const db = require('../config/db.config');
 const Chale = {};
 
 Chale.getAll = (result) => {
-  db.query('SELECT * FROM Chales', (err, res) => {
+  db.query('SELECT * FROM chales', (err, res) => {
     if (err) {
       console.log('Erro ao buscar chalés:', err);
       result(err, null);
@@ -14,7 +14,7 @@ Chale.getAll = (result) => {
 };
 
 Chale.create = (novoChale, result) => {
-  db.query('INSERT INTO Chales SET ?', novoChale, (err, res) => {
+  db.query('INSERT INTO chales SET ?', novoChale, (err, res) => {
     if (err) {
       console.log('Erro ao criar chalé:', err);
       result(err, null);
@@ -25,7 +25,7 @@ Chale.create = (novoChale, result) => {
 };
 
 Chale.delete = (id, result) => {
-  db.query('DELETE FROM Chales WHERE id = ?', id, (err, res) => {
+  db.query('DELETE FROM chales WHERE id = ?', id, (err, res) => {
     if (err) {
       console.log('Erro ao deletar chalé:', err);
       result(err, null);
@@ -40,7 +40,7 @@ Chale.delete = (id, result) => {
 };
 
 Chale.update = (id, chale, result) => {
-  db.query('UPDATE Chales SET ? WHERE id = ?', [chale, id], (err, res) => {
+  db.query('UPDATE chales SET ? WHERE id = ?', [chale, id], (err, res) => {
     if (err) {
       console.log('Erro ao atualizar chalé:', err);
       result(err, null);
@@ -55,7 +55,7 @@ Chale.update = (id, chale, result) => {
 };
 
 Chale.findById = (id, result) => {
-  db.query(`SELECT * FROM Chales WHERE id = ${id}`, (err, res) => {
+  db.query(`SELECT * FROM chales WHERE id = ${id}`, (err, res) => {
     if (err) {
       console.log('Erro ao buscar chalé:', err);
       result(err, null);

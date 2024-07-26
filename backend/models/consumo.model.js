@@ -3,7 +3,7 @@ const db = require('../config/db.config');
 const Consumo = {};
 
 Consumo.getAll = (result) => {
-    db.query('SELECT * FROM Consumos', (err, res) => {
+    db.query('SELECT * FROM consumos', (err, res) => {
         if (err) {
             console.log('Erro ao buscar consumos:', err);
             result(err, null);
@@ -14,7 +14,7 @@ Consumo.getAll = (result) => {
 };
 
 Consumo.create = (novoConsumo, result) => {
-    db.query('INSERT INTO Consumos SET ?', novoConsumo, (err, res) => {
+    db.query('INSERT INTO consumos SET ?', novoConsumo, (err, res) => {
         if (err) {
             console.log('Erro ao criar consumo:', err);
             result(err, null);
@@ -25,7 +25,7 @@ Consumo.create = (novoConsumo, result) => {
 };
 
 Consumo.delete = (id, result) => {
-    db.query('DELETE FROM Consumos WHERE id = ?', id, (err, res) => {
+    db.query('DELETE FROM consumos WHERE id = ?', id, (err, res) => {
         if (err) {
             console.log('Erro ao deletar consumo:', err);
             result(err, null);
@@ -40,7 +40,7 @@ Consumo.delete = (id, result) => {
 };
 
 Consumo.update = (id, consumo, result) => {
-    db.query('UPDATE Consumos SET ? WHERE id = ?', [consumo, id], (err, res) => {
+    db.query('UPDATE consumos SET ? WHERE id = ?', [consumo, id], (err, res) => {
         if (err) {
             console.log('Erro ao atualizar consumo:', err);
             result(err, null);
@@ -55,7 +55,7 @@ Consumo.update = (id, consumo, result) => {
 };
 
 Consumo.findById = (id, result) => {
-    db.query(`SELECT * FROM Consumos WHERE id = ${id}`, (err, res) => {
+    db.query(`SELECT * FROM consumos WHERE id = ${id}`, (err, res) => {
         if (err) {
             console.log('Erro ao buscar consumo:', err);
             result(err, null);
