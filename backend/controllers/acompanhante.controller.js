@@ -1,4 +1,4 @@
-const Acompanhante = require('../models/acompanhante.model.js');
+const Acompanhante = require('../models/acompanhante.model');
 
 // GET /api/acompanhantes
 exports.findAll = (req, res) => {
