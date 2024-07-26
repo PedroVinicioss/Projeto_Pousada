@@ -39,6 +39,21 @@ Chale.delete = (id, result) => {
   });
 };
 
+Chale.update = (id, chale, result) => {
+  db.query('UPDATE Chales SET ? WHERE id = ?', [chale, id], (err, res) => {
+    if (err) {
+      console.log('Erro ao atualizar chalé:', err);
+      result(err, null);
+      return;
+    }
+    if (res.affectedRows == 0) {
+      result({ kind: 'not_found' }, null);
+      return;
+    }
+    result(null, { id: id, ...chale });
+  });
+};
+
 Chale.findById = (id, result) => {
   db.query(`SELECT * FROM Chales WHERE id = ${id}`, (err, res) => {
     if (err) {
