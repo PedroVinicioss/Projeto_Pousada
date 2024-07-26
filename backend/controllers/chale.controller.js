@@ -1,5 +1,6 @@
 const Chale = require('../models/chale.model');
 
+// GET /api/chales
 exports.findAll = (req, res) => {
   Chale.getAll((err, data) => {
     if (err)
@@ -10,6 +11,7 @@ exports.findAll = (req, res) => {
   });
 };
 
+// POST /api/chales
 exports.create = (req, res) => {
   // Validar requisição
   if (!req.body.nome) {
@@ -34,4 +36,62 @@ exports.create = (req, res) => {
   });
 };
 
-// Outras funções de manipulação de Chales podem ser adicionadas aqui...
+// PUT /api/chales/:id
+exports.update = (req, res) => {
+  // Validar requisição
+  if (!req.body) {
+    res.status(400).send({
+      message: 'Conteúdo não pode ser vazio!'
+    });
+    return;
+  }
+
+  // Atualizar Chalé na base de dados
+  Chale.updateById(req.params.id, new Chale(req.body), (err, data) => {
+    if (err) {
+      if (err.kind === 'não encontrado') {
+        res.status(404).send({
+          message: `Chalé com id ${req.params.id} não encontrado.`
+        });
+      } else {
+        res.status(500).send({
+          message: `Erro ao atualizar o Chalé com id ${req.params.id}`
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+// GET /api/chales/:id
+exports.findOne = (req, res) => {
+  Chale.findById(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === 'não encontrado') {
+        res.status(404).send({
+          message: `Chalé com id ${req.params.id} não encontrado.`
+        });
+      } else {
+        res.status(500).send({
+          message: `Erro ao buscar o Chalé com id ${req.params.id}`
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+// DELETE /api/chales/:id
+exports.delete = (req, res) => {
+  Chale.remove(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === 'não encontrado') {
+        res.status(404).send({
+          message: `Chalé com id ${req.params.id} não encontrado.`
+        });
+      } else {
+        res.status(500).send({
+          message: `Erro ao deletar o Chalé com id ${req.params.id}`
+        });
+      }
+    } else res.send({ message: 'Chalé deletado com sucesso!' });
+  });
+};
