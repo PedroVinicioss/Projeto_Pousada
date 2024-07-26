@@ -71,7 +71,7 @@ exports.update = (req, res) => {
 };
 
 // GET /api/acompanhantes/:id
-exports.findById = (req, res) => {
+exports.findOne = (req, res) => {
     Acompanhante.findById(req.params.id, (err, data) => {
         if (err) {
             if (err.kind === 'not_found')
