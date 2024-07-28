@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 const chales = require('../controllers/chale.controller');
 
-// Rota para buscar todos os chalés
 router.get('/', chales.findAll);
 
-// Rota para criar um novo chalé
 router.post('/', chales.create);
 
-// Outras rotas de Chalés podem ser adicionadas aqui...
+router.put('/:id', chales.update);
+
+router.delete('/:id', chales.delete);
+
+router.get('/:id', chales.findOne);
 
 module.exports = router;
