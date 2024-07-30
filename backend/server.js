@@ -8,10 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const chaleRoutes = require('./routes/chale.routes');
-app.use('/api/chales', chaleRoutes);
-
-const hospedeRoutes = require('./routes/hospede.routes');
-app.use('/api/hospedes', hospedeRoutes);
+app.use('/chales', chaleRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

@@ -13,7 +13,7 @@ db.connect((err) => {
         console.error('Erro ao conectar ao banco de dados:', err.stack);
         return;
     }
-    console.log('Conectado ao banco de dados MySQL como ID ' + connection.threadId);
+    console.log('Conectado ao banco de dados MySQL como ID ' + db.threadId);
 });
 
 module.exports = db;

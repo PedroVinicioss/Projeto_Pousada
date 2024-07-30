@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const chales = require('../controllers/chale.controller');
+const chale = require('../controllers/chale.controller');
 
-router.get('/', chales.findAll);
+router.get('/', chale.findAll);
 
-router.post('/', chales.create);
+router.post('/', chale.create);
 
-router.put('/:id', chales.update);
+router.put('/:id', chale.update);
 
-router.delete('/:id', chales.delete);
+router.delete('/:id', chale.delete);
 
-router.get('/:id', chales.findOne);
+router.get('/:id', chale.findOne);
 
 module.exports = router;
